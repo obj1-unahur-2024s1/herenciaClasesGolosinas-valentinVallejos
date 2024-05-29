@@ -63,6 +63,17 @@ object mariano {
 	method tieneGolosinaDeSabor(_sabor) {
 		return golosinas.any({_golosina => _golosina.sabor() == _sabor})
 	}
+	
+	method tieneGolosina(golosina) = golosinas.isEmpty(golosina)
+	
+	// si ya tiene la golosina en la coleccion no hace nada y si es una golosina bañada la vuelve a bañar
+	method banarGolosina(unaGolosina){
+		const gb = new GolosinaBaniada(golosinaInterior = unaGolosina)
+		
+		if (not self.tieneGolosina(gb)){
+			self.comprar(gb)
+		}
+	}	
 }
 
 
